@@ -1,14 +1,14 @@
 # workflow-engine
 
-> A Vue.js project
+> A Vue.js project combined iView
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+第一步安装相关依赖包
 npm install
 
-# serve with hot reload at localhost:8080
+开启服务 port:8888
 npm run dev
 
 # build for production with minification
