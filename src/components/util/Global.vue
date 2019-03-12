@@ -1,6 +1,6 @@
 <script type="es6">
-  //const serverPath = 'http://kischang.free.ngrok.cc'
-  const serverPath = 'http://localhost:8080'
+  // 后端接口地址+端口
+  const serverPath = 'http://localhost:8081'
   export default {
     serverPath
   }

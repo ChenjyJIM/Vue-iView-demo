@@ -1,8 +1,8 @@
 {
-  "name": "sbm",
+  "name": "workflow-engine",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "yangyuscript <1837475870@qq.com>",
+  "description": "A Vue.js project combined iView",
+  "author": "jimmy <545453514@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "iview": "^2.7.4",
     "vue": "^2.5.2",
     "vue-quill-editor": "^3.0.4",

@@ -7,10 +7,11 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-import HelloWorld from '@/components/HelloWorld'
-import Index from '@/components/Index'
-import Reader from '@/components/Reader'
-import Manager from '@/components/Manager'
+import HelloWorld from '@/components/workflow-engine/HelloWorld'
+import Index from '@/components/original/Index'
+import Reader from '@/components/original/Reader'
+import Manager from '@/components/original/Manager'
+import RegIndex from '@/components/workflow-engine/RegIndex'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/manager',
       component: Manager
+    },
+    {
+      path: '/regindex',
+      component: RegIndex
     }
   ]
 })

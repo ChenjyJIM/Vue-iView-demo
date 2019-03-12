@@ -4,15 +4,15 @@
       <Col span="5" class="layout-menu-left">
       <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
         <div class="layout-logo-left">
-          <h2 style="color:white;">图书馆</h2>
+          <h2 style="color:white;">南京邮电大学图书馆</h2>
         </div>
         <Submenu name="1">
           <template slot="title">
             <Icon type="ios-navigate"></Icon>
             欢迎你，{{msg}}同学
           </template>
-          <MenuItem name="1-1" @click.native="searchBook"><span>搜索书籍</span></MenuItem>
-          <MenuItem name="1-2" @click.native="lookRecord"><span>借阅记录</span></MenuItem>
+          <MenuItem name="1-1"><span @click="searchBook">搜索书籍</span></MenuItem>
+          <MenuItem name="1-2"><span @click="lookRecord">借阅记录</span></MenuItem>
         </Submenu>
         <!--<Submenu name="2">
           <template slot="title">
@@ -49,15 +49,15 @@
         </div>
       </div>
       <div class="layout-copy">
-        2017-2018 &copy; 图书馆管理
+        2018-2019 &copy; 工作流引擎系统
       </div>
       </Col>
     </Row>
   </div>
 </template>
 <script>
-  import searchBook from '../components/SearchBook.vue'
-  import myRecord from '../components/MyRecord.vue'
+  import searchBook from './SearchBook.vue'
+  import myRecord from './MyRecord.vue'
   import Button from 'iview/src/components/button/button'
   export default {
     name: 'Reader',

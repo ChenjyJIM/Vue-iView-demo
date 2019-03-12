@@ -12,6 +12,37 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
+/**
+ * 日期转换
+ * @param {*} timestamp  Date对象
+ * @param {*} format  yyyy-MM-dd hh:mm:ss (格式化结构)
+ * import {dateFormat} from '../../../build/util'
+ * 用法：dateFormat(new Date('秒级时间戳' * 1000), 'yyyy-MM-dd hh:mm:ss')
+ */
+function dateFormat(timestamp, format) {
+  var date = {
+    'M+': timestamp.getMonth() + 1,
+    'd+': timestamp.getDate(),
+    'h+': timestamp.getHours(),
+    'm+': timestamp.getMinutes(),
+    's+': timestamp.getSeconds(),
+    'q+': Math.floor((timestamp.getMonth() + 3) / 3),
+    'S+': timestamp.getMilliseconds()
+  };
+
+  if (/(y+)/i.test(format)) {
+    format = format.replace(RegExp.$1, (timestamp.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+
+  for (var k in date) {
+    if (new RegExp('(' + k + ')').test(format)) {
+      format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? date[k] : ('00' + date[k]).substr(('' + date[k]).length));
+    }
+  }
+
+  return format;
+};
+
 exports.cssLoaders = function (options) {
   options = options || {}
 
