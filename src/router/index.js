@@ -12,6 +12,8 @@ import Index from '@/components/original/Index'
 import Reader from '@/components/original/Reader'
 import Manager from '@/components/original/Manager'
 import RegIndex from '@/components/workflow-engine/RegIndex'
+import defaultView from '@/components/workflow-engine/DefaultView'
+import goJs from '@/components/workflow-engine/Gojs'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -41,6 +43,14 @@ export default new Router({
     {
       path: '/regindex',
       component: RegIndex
+    },
+    {
+      path: '/default',
+      component: defaultView
+    },
+    {
+      path: '/go',
+      component: goJs
     }
   ]
 })

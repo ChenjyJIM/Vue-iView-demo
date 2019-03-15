@@ -17,8 +17,31 @@
         </Menu>
       </Col>
       <Col span="19">
-        <!--<div class="layout-header"></div>-->
-        <h1>dfasfsd</h1>
+        <Header>
+          <Menu mode="horizontal" theme="dark" active-name="1" @on-select="topMenuSelect">
+            <div class="layout-logo">
+              <p style="color: rgba(0,0,0,1);">这里放logo</p>
+            </div>
+            <div class="layout-nav">
+              <MenuItem name="1">
+                <Icon type="ios-navigate"></Icon>
+                Item 1
+              </MenuItem>
+              <MenuItem name="2">
+                <Icon type="ios-keypad"></Icon>
+                Item 2
+              </MenuItem>
+              <MenuItem name="personal">
+                <Icon type="ios-person-outline" />
+                个人
+              </MenuItem>
+              <MenuItem name="logout" >
+                <Icon type="ios-redo" />
+                退出登录
+              </MenuItem>
+            </div>
+          </Menu>
+        </Header>
         <div class="layout-breadcrumb">
           <Breadcrumb>
             <BreadcrumbItem href="#">{{one_nav}}</BreadcrumbItem>
@@ -78,6 +101,13 @@
         this.two_nav = '后台管理'
         this.three_nav = '借阅记录'
         this.currentView = 'recordManage'
+      },
+      topMenuSelect (name) {
+        if (name === 'personal') {
+          alert('nnnnnnnn')
+        } else if (name === 'logout') {
+          alert('mmmmm')
+        }
       }
     },
     components: {
@@ -94,7 +124,23 @@
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
-    margin-top:-60px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .layout-logo{
+     width: 100px;
+     height: 40px;
+     background: #5b6270;
+     border-radius: 10px;
+     float: left;
+     position: relative;
+     top: 15px;
+     left: 20px;
+   }
+  .layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
   }
   .layout-breadcrumb{
     padding: 10px 15px 0;
@@ -120,7 +166,7 @@
   }
   .layout-header{
     height: 60px;
-    background: #fff;
+    background: #4ba9b4;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
   }
   .layout-logo-left{

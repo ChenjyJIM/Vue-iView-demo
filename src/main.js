@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import Global from './components/util/Global'
 import axios from 'axios'
+import gojs from 'gojs'
 
+Vue.prototype.go = gojs
 Vue.prototype.GLOBAL = Global
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios

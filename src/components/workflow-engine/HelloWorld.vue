@@ -107,8 +107,16 @@
               })
                 .then(function (response) {
                   if (response.data.success) {
-                    that.$router.replace({path: '/manager'})
-                    alert('成功！' + that.formItem.account)
+                    if (response.data.data.type === 1) {
+                      alert('成功！' + that.formItem.account)
+                      that.$router.replace({path: '/default'})
+                    } else if (response.data.data.type === 2) {
+                      alert('成功！' + that.formItem.account)
+                      that.$router.replace({path: '/default'})
+                    } else {
+                      that.loading = false
+                      alert('登录失败！不支持用户类型' + response.data.data.type)
+                    }
                     window.localStorage.setItem('username', that.formItem.account)
                     window.localStorage.setItem('token', response.data.data.token)
                   } else {
@@ -117,7 +125,8 @@
                   }
                 })
                 .catch(function (error) {
-                  alert(error.message)
+                  that.loading = false
+                  alert('服务器开小差啦～～ \n' + error.message)
                 })
               // that.$http.post(that.GLOBAL.serverPath + '/excise/login',
               //   {
