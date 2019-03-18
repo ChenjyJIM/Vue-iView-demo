@@ -2,29 +2,37 @@
   <div class="layout">
     <Row type="flex">
       <Col span="5" class="layout-menu-left">
-        <Menu active-name="1-1" theme="dark" width="auto" :open-names="['1']">
+        <Menu active-name="personInfo" theme="dark" width="auto" :open-names="['1']" @on-select="leftMenuSelect">
           <div class="layout-logo-left">
             <h2 style="color:white;">杭州市科学协会管理系统</h2>
           </div>
+          <MenuGroup title="账户与安全">
+          </MenuGroup>
           <Submenu name="1">
             <template slot="title">
-              <Icon type="ios-navigate"></Icon>
-              欢迎你，{{msg}}
+              <Icon type="ios-person-outline" />
+              账户
             </template>
-            <MenuItem name="1-1"><div @click="memberRegister">学会活动报名</div></MenuItem>
-            <MenuItem name="1-2"><div @click="guestRegister">学会入会申请</div></MenuItem>
-            <MenuItem name="1-3"><div @click="gojs">流程图demo</div></MenuItem>
+            <MenuItem name="personInfo">个人信息</MenuItem>
+            <MenuItem name="passwordModified">修改密码</MenuItem>
+          </Submenu>
+          <Submenu name="2">
+            <template slot="title">
+              <Icon type="ios-cog" />
+              安全
+            </template>
+            <MenuItem name="2-1">找回密码</MenuItem>
           </Submenu>
         </Menu>
       </Col>
       <Col span="19">
         <Header>
-          <Menu mode="horizontal" theme="light" active-name="1" @on-select="topMenuSelect">
+          <Menu mode="horizontal" theme="light" active-name="personal" @on-select="topMenuSelect">
             <!--<div class="layout-logo">-->
-              <!--<p style="color: rgba(0,0,0,1);">这里放logo</p>-->
+            <!--<p style="color: rgba(0,0,0,1);">这里放logo</p>-->
             <!--</div>-->
             <div class="layout-nav">
-              <MenuItem name="navigate2">
+              <MenuItem name="default">
                 <Icon type="ios-navigate"></Icon>
                 首页
               </MenuItem>
@@ -45,15 +53,15 @@
         </Header>
         <div class="layout-breadcrumb">
           <Breadcrumb>
-            <BreadcrumbItem href="/manager">{{one_nav}}</BreadcrumbItem>
+            <BreadcrumbItem href="/default">{{one_nav}}</BreadcrumbItem>
             <BreadcrumbItem href="#">{{two_nav}}</BreadcrumbItem>
             <BreadcrumbItem>{{three_nav}}</BreadcrumbItem>
           </Breadcrumb>
         </div>
         <div class="layout-content">
           <div class="layout-content-main">
-            <template id="activityDisplay"></template>
-            <template id="registerGuest"></template>
+            <template id="personInfo"></template>
+            <template id="passwordChange"></template>
             <component :is="currentView"></component>
           </div>
         </div>
@@ -68,70 +76,61 @@
 </template>
 <script>
   import Button from 'iview/src/components/button/button'
-  import activityDisplay from './ActivityDisplay'
   import foot from './Foot.vue'
-  import registerGuest from './RegisterGuest'
-  import gojs from './Gojs'
+  import personInfo from './PersonInfo'
+  import passwordChange from './PasswordChange'
+
+
   export default {
     name: 'DefaultView',
     data () {
       return {
-        msg: 'haha',
         one_nav: '主页',
         two_nav: '>',
-        three_nav: '活动报名',
-        currentView: 'activityDisplay',
+        three_nav: '个人信息',
+        currentView: 'personInfo',
         foot: 'foot'
       }
     },
-    mounted () {
-      this.msg = window.localStorage.getItem('username')
-    },
     methods: {
-      memberRegister () {
-        alert( '调用memberRegister')
+      infoModified () {
         this.one_nav = '主页'
         this.two_nav = '>'
-        this.three_nav = '活动报名'
-        this.currentView = 'activityDisplay'
+        this.three_nav = '个人信息'
+        this.currentView = 'personInfo'
       },
-      guestRegister () {
-        alert( '调用guestRegister')
+      passwordModified () {
         this.one_nav = '主页'
         this.two_nav = '>'
-        this.three_nav = '会员申请'
-        this.currentView = 'registerGuest'
-      },
-      gojs () {
-        alert( '调用gojs')
-        this.one_nav = '主页'
-        this.two_nav = '>'
-        this.three_nav = '流程图'
-        this.currentView = 'gojs'
-      },
-      personInfo () {
-        this.$router.replace({path: '/person'})
+        this.three_nav = '密码修改'
+        this.currentView = 'passwordChange'
       },
       topMenuSelect (name) {
         let that = this
         if (name === 'personal') {
-          this.personInfo()
+          that.$router.replace({path: '/person'})
         } else if (name === 'logout') {
           alert('退出登录成功')
           window.localStorage.setItem('username', null)
           window.localStorage.setItem('token', null)
-          window.localStorage.setItem('type', null)
           that.$router.replace({path: '/login'})
         }else if (name === 'default') {
           that.$router.replace({path: '/default'})
+        }
+      },
+      leftMenuSelect (name) {
+        let that = this
+        if (name === 'personInfo') {
+          that.infoModified()
+        } else if (name === 'passwordModified') {
+         that.passwordModified()
         }
       }
     },
     components: {
       Button,
-      activityDisplay: activityDisplay,
-      registerGuest: registerGuest,
-      gojs: gojs,
+      personInfo: personInfo,
+      passwordChange: passwordChange,
       foot: foot
     }
   }
@@ -149,15 +148,15 @@
     /*margin-top:-60px;*/
   }
   .layout-logo{
-     width: 100px;
-     height: 40px;
-     background: #5b6270;
-     border-radius: 10px;
-     float: left;
-     position: relative;
-     top: 15px;
-     left: 20px;
-   }
+    width: 100px;
+    height: 40px;
+    background: #5b6270;
+    border-radius: 10px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+  }
   .layout-nav{
     width: 400px;
     margin: 0 auto;

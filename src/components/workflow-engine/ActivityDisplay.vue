@@ -72,7 +72,7 @@
         },
         columns7: [
           {
-            title: '编号',
+            title: '活动编号',
             key: 'aid',
             render: (h, params) => {
               return h('div', [
@@ -86,23 +86,23 @@
             }
           },
           {
-            title: '书名',
+            title: '活动名称',
             key: 'title'
           },
           {
-            title: '作者',
+            title: '活动发起者',
             key: 'author'
           },
           {
-            title: '出版社',
+            title: '活动发起学会',
             key: 'publisher'
           },
           {
-            title: '出版时间',
+            title: '开始时间',
             key: 'publishtime'
           },
           {
-            title: '可借副本',
+            title: '活动行业分类',
             key: 'count'
           },
           {
@@ -195,7 +195,6 @@
             emulateJSON: true
           }
         ).then(function (res) {
-          console.log(res.data.pageInfo)
           that.total=res.data.pageInfo.total
           that.data6=[]
           that.data7=res.data.albums

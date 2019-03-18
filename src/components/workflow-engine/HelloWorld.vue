@@ -110,15 +110,21 @@
                     if (response.data.data.type === 1) {
                       alert('成功！' + that.formItem.account)
                       that.$router.replace({path: '/default'})
+                      window.localStorage.setItem('type', response.data.data.type)
+                      window.localStorage.setItem('username', that.formItem.account)
+                      window.localStorage.setItem('token', response.data.data.token)
+
                     } else if (response.data.data.type === 2) {
                       alert('成功！' + that.formItem.account)
                       that.$router.replace({path: '/default'})
+                      window.localStorage.setItem('type', response.data.data.type)
+                      window.localStorage.setItem('username', that.formItem.account)
+                      window.localStorage.setItem('token', response.data.data.token)
                     } else {
+                      // type不在 1和2 之中则暂时不允许其登录
                       that.loading = false
                       alert('登录失败！不支持用户类型' + response.data.data.type)
                     }
-                    window.localStorage.setItem('username', that.formItem.account)
-                    window.localStorage.setItem('token', response.data.data.token)
                   } else {
                     that.loading = false
                     alert(response.data.errMsg)

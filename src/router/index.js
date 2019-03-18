@@ -14,6 +14,7 @@ import Manager from '@/components/original/Manager'
 import RegIndex from '@/components/workflow-engine/RegIndex'
 import defaultView from '@/components/workflow-engine/DefaultView'
 import goJs from '@/components/workflow-engine/Gojs'
+import person from '@/components/workflow-engine/Person'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -24,7 +25,7 @@ Vue.use(VueQuillEditor)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -51,6 +52,10 @@ export default new Router({
     {
       path: '/go',
       component: goJs
+    },
+    {
+      path: '/person',
+      component: person
     }
   ]
 })
