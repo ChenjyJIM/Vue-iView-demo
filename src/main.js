@@ -12,15 +12,24 @@ Vue.prototype.GLOBAL = Global
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 
-// 设置请求头部content-type:application/x-www-form-urlencoded
-// Vue.http.options.emulateJSON = true
-// Vue.http.options.emulateHTTP = true
-// Vue.http.options.xhr = { withCredentials: true }
 
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login' || to.path === '/regindex'){
+    next()
+  }else if( window.localStorage.getItem("token") === 'null' ){
+    alert("您还未登录，请您登录！")
+    return next('/login')
+  }else {
+    next()
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App }
+
 })
+
+

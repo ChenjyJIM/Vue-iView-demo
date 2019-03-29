@@ -24,7 +24,7 @@
               <!--<p style="color: rgba(0,0,0,1);">这里放logo</p>-->
             <!--</div>-->
             <div class="layout-nav">
-              <MenuItem name="navigate2">
+              <MenuItem name="default">
                 <Icon type="ios-navigate"></Icon>
                 首页
               </MenuItem>

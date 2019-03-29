@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dhtmlx-gantt": "^6.1.1",
     "gojs": "^2.0.4",
     "iview": "^2.7.4",
     "vue": "^2.5.2",

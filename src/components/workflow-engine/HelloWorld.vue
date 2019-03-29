@@ -109,17 +109,16 @@
                   if (response.data.success) {
                     if (response.data.data.type === 1) {
                       alert('成功！' + that.formItem.account)
-                      that.$router.replace({path: '/default'})
                       window.localStorage.setItem('type', response.data.data.type)
                       window.localStorage.setItem('username', that.formItem.account)
                       window.localStorage.setItem('token', response.data.data.token)
-
+                      that.$router.replace({path: '/default'})
                     } else if (response.data.data.type === 2) {
                       alert('成功！' + that.formItem.account)
-                      that.$router.replace({path: '/default'})
                       window.localStorage.setItem('type', response.data.data.type)
                       window.localStorage.setItem('username', that.formItem.account)
                       window.localStorage.setItem('token', response.data.data.token)
+                      that.$router.replace({path: '/default'})
                     } else {
                       // type不在 1和2 之中则暂时不允许其登录
                       that.loading = false
